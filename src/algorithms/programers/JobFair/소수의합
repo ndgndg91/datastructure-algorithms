@@ -1,0 +1,87 @@
+import java.util.ArrayList;
+class Solution {
+    private static int[] combination = new int[3];
+    private static int numberOfCase = 0;
+    public int solution(int n) {
+        ArrayList<Integer> primes = getPrime(n);
+        boolean[] visited = new boolean[primes.size()];
+        getAnswer(primes, visited, n);
+        return numberOfCase;
+    }
+    
+    public static void getAnswer(ArrayList<Integer> primes, boolean[] visited, int n){
+        for (int i = 0; i < primes.size(); i++) {
+            makeForwardVisited(i, visited);
+            DFS(i, 0, primes, visited, n);
+            visited[i] = false;
+        }
+    }
+    private static void DFS(int index, int depth, ArrayList<Integer> primes, boolean[] visited, int n) {
+        combination[depth] = primes.get(index);
+        if (depth == 2) {
+            int result = 0;
+            for(int i = 0; i < combination.length; i++) {
+                result += combination[i];
+            }
+            if(result == n) {
+                numberOfCase++;
+            }
+        } else {
+            for (int i = index; i < primes.size(); i++) {
+                if (visited[i])
+                    continue;
+                visited[i] = true;
+                DFS(i, depth + 1, primes, visited, n);
+                visited[i] = false;
+            }
+        }
+    }
+    
+    private static void makeForwardVisited(int idx, boolean[] arr) {
+        for (int i = idx; i > -1; i--) {
+            arr[i] = true;
+        }
+    }
+    
+    public static ArrayList<Integer> getPrime(int num) {
+        ArrayList<Integer> arr = new ArrayList<Integer>();
+	    int i = 2; // i : 나눌 대상
+	    boolean isPrime = true;
+		
+	    while (i <= num) {
+		    isPrime = true;
+		
+		    for (int n = 2; n < i; n++) {
+			    if (i % n == 0) {
+				    isPrime = false;
+			    }
+			    continue;
+	    	}
+		
+		    if (isPrime == true)
+			    arr.add(i);
+		    i++;
+    	} 
+        return arr;
+    }
+}
+
+
+
+어떤 수를 서로 다른 소수 3개의 합으로 표현하는 경우의 수를 구하려 합니다. 예를 들어 33은 총 4가지 방법으로 표현할 수 있습니다.
+3+7+23
+3+11+19
+3+13+17
+5+11+17
+자연수 n이 매개변수로 주어질 때, n을 서로 다른 소수 3개의 합으로 표현하는 경우의 수를 return 하는 solution 함수를 작성해주세요.
+제한 조건
+n은 1,000 이하인 자연수입니다.
+입출력 예
+n   return
+33  4
+9   0
+입출력 예 설명
+예시 #1
+문제에 나온 예와 같습니다.
+예시 #2
+9는 서로 다른 세 소수의 합으로 나타낼 수 없습니다.
