@@ -1,17 +1,17 @@
-package dataStructure;
+package dataStructure.list;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class MyArrayList<T> implements Iterable<T>{
+public class MyList<T> implements Iterable<T>{
     private T[] list;
     private Class<T> type;
     private int current;
     private int maxSize;
     private static final int increment = 10;
 
-    public MyArrayList(Class<T> type) {
+    public MyList(Class<T> type) {
         this.type = type;
         list = (T[]) Array.newInstance(type, increment);
         current = 0;
@@ -58,38 +58,38 @@ public class MyArrayList<T> implements Iterable<T>{
     }
 
     public static void main(String[] args) {
-        MyArrayList<Integer> myArrayList = new MyArrayList<>(Integer.class);
-        System.out.println(myArrayList.size());
-        myArrayList.add(1);
-        System.out.println(myArrayList.size());
-        myArrayList.clear();
-        System.out.println(myArrayList.size());
+        MyList<Integer> myList = new MyList<>(Integer.class);
+        System.out.println(myList.size());
+        myList.add(1);
+        System.out.println(myList.size());
+        myList.clear();
+        System.out.println(myList.size());
 
         for (int i = 1; i < 13; i++) {
-            myArrayList.add(i);
+            myList.add(i);
         }
-        System.out.println(myArrayList.size());
+        System.out.println(myList.size());
         System.out.println();
-        myArrayList.add(1, 100);
-        for (int i = 0; i < myArrayList.size(); i++){
-            System.out.println(myArrayList.get(i));
+        myList.add(1, 100);
+        for (int i = 0; i < myList.size(); i++){
+            System.out.println(myList.get(i));
         }
         System.out.println("iterator");
-        Iterator iterator = myArrayList.iterator();
+        Iterator iterator = myList.iterator();
         while (iterator.hasNext()){
             System.out.println(iterator.next());
         }
         System.out.println("foreach");
-        for (int i : myArrayList) {
+        for (int i : myList) {
             System.out.println(i);
         }
 
 
         System.out.println("test");
-        myArrayList.forEach((item) -> System.out.println(item) );
+        myList.forEach((item) -> System.out.println(item) );
 
 
-        MyArrayList<Developer> developers = new MyArrayList<>(Developer.class);
+        MyList<Developer> developers = new MyList<>(Developer.class);
         developers.add(new Developer("남동길", 29, "JAVA"));
         developers.add(new Developer("김동범", 28, "JAVA"));
         developers.add(new Developer("은종현", 28, "JAVA"));
