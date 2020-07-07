@@ -1,17 +1,54 @@
 package dataStructure.list.review;
 
-import java.util.LinkedList;
-import java.util.List;
 
 public class LinkedListDriver {
 
     public static void main(String[] args) {
-        List<Long> list = new LinkedList<>();
-        list.add(1L);
+//        linkedList();
+        long start = System.currentTimeMillis();
+        divideOperations();
+//        bitOperations();
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);
 
-        dataStructure.list.review.LinkedList<Long> linkedList = new dataStructure.list.review.LinkedList<>();
+    }
+
+    private static int[] divideOperations(){
+        int loop = 500000000;
+        int[] result = new int[loop+1];
+        for (int idx = 1; idx <= loop; idx++) {
+            result[idx] = idx / 2;
+        }
+
+        for (int idx = 1; idx <= loop; idx++) {
+            result[idx] = result[idx] + idx / 2;
+        }
+
+        return result;
+    }
+
+    private static int[] bitOperations(){
+        int loop = 500000000;
+        int[] result = new int[loop + 1];
+        for (int idx = 1; idx <= loop; idx++) {
+            result[idx] = idx >> 1;
+        }
+
+        for (int idx = 1; idx <= loop; idx++) {
+            result[idx] = result[idx] + idx >> 1;
+        }
+
+        return result;
+    }
+
+    private static void linkedList() {
+        LinkedList<Long> linkedList = new LinkedList<>();
         linkedList.add(1L);
         linkedList.add(2L);
+        linkedList.add(200L);
+        linkedList.add(300L);
+        linkedList.addFirst(0L);
+        System.out.println(linkedList.size());
 
         for (Long l : linkedList) {
             System.out.println(l);

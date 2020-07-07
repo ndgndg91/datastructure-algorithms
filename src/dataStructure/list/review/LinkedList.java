@@ -4,70 +4,68 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class LinkedList<T> implements Iterable<T>{
-    private Node<T> head;
-    private Node<T> tail;
-    private long size;
+public class LinkedList<E> implements Iterable<E>{
+    private Node<E> first;
+    private Node<E> last;
+    private int size;
 
-    public LinkedList(){
-        this.head = null;
-        this.tail = null;
-        this.size = 0;
-    }
-
-    private void linkTail(T e){
-        Node<T> t = this.tail;
-        Node<T> newNode = new Node<>(t, e, null);
-
-        if (t == null) {
-            this.head = newNode;
+    public void addFirst(E e) {
+        if (first == null) {
+            Node<E> nNode = new Node<>(null, e, null);
+            first = nNode;
+            last = nNode;
         } else {
-            t.next = newNode;
+            Node<E> n = first;
+            first = new Node<>(null, e, n);
+            n.prev = first;
         }
 
-        this.size++;
+        size++;
+    }
+    
+    public void add(E e) {
+        addLast(e);
     }
 
-    private void linkHead(T e) {
-        Node<T> h = this.head;
-        Node<T> newNode = new Node<>(null, e, h);
-
-        if (h == null) {
-            this.head = newNode;
+    public void addLast(E e) {
+        if (last == null) {
+            Node<E> nNode = new Node<>(null, e, null);
+            first = nNode;
+            last = nNode;
         } else {
-            h.prev = newNode;
+            Node<E> l = new Node<>(last, e, null);
+            last.next = l;
+            last = l;
         }
 
-        this.size++;
+        size++;
     }
 
-    public boolean add(T e) {
-        linkHead(e);
-        return true;
+    public int size(){
+        return size;
     }
 
     @Override
-    public Iterator<T> iterator() {
-        List<T> list = new ArrayList<>();
-        if (this.head != null) {
-            Node<T> x = this.head;
-            list.add(x.data);
-            for (int i = 1; i < this.size; i++) {
-                x = x.next;
-                T d = x.data;
-                list.add(d);
+    public Iterator<E> iterator() {
+        List<E> list = new ArrayList<>();
+        if (first != null) {
+            Node<E> f = this.first;
+            list.add(f.data);
+            while (f.next != null) {
+                list.add(f.next.data);
+                f = f.next;
             }
         }
 
         return list.iterator();
     }
 
-    private static final class Node<T> {
-        Node<T> prev;
-        T data;
-        Node<T> next;
+    private static final class Node<E> {
+        Node<E> prev;
+        E data;
+        Node<E> next;
 
-        public Node(Node<T> prev, T data, Node<T> next) {
+        public Node(Node<E> prev, E data, Node<E> next) {
             this.prev = prev;
             this.data = data;
             this.next = next;
