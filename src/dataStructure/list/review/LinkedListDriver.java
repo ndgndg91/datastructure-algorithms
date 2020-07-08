@@ -14,7 +14,7 @@ public class LinkedListDriver {
     }
 
     private static int[] divideOperations(){
-        int loop = 500000000;
+        int loop = 2000000000;
         int[] result = new int[loop+1];
         for (int idx = 1; idx <= loop; idx++) {
             result[idx] = idx / 2;
@@ -28,7 +28,7 @@ public class LinkedListDriver {
     }
 
     private static int[] bitOperations(){
-        int loop = 500000000;
+        int loop = 2000000000;
         int[] result = new int[loop + 1];
         for (int idx = 1; idx <= loop; idx++) {
             result[idx] = idx >> 1;
