@@ -41,6 +41,29 @@ public class LinkedList<E> implements Iterable<E>{
         size++;
     }
 
+    public E get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        int i;
+        Node<E> e;
+        if (index < size >> 1) {
+            e = first;
+
+            for (i = 0; i < index; i++)
+                e = e.next;
+
+        } else {
+            e = last;
+
+            for (i = size - 1; i > index; i--)
+                e = e.prev;
+
+        }
+        return e.data;
+    }
+
     public int size(){
         return size;
     }

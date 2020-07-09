@@ -4,12 +4,12 @@ package dataStructure.list.review;
 public class LinkedListDriver {
 
     public static void main(String[] args) {
-//        linkedList();
-        long start = System.currentTimeMillis();
-        divideOperations();
+        linkedList();
+//        long start = System.currentTimeMillis();
+//        divideOperations();
 //        bitOperations();
-        long end = System.currentTimeMillis();
-        System.out.println(end - start);
+//        long end = System.currentTimeMillis();
+//        System.out.println(end - start);
 
     }
 
@@ -53,5 +53,9 @@ public class LinkedListDriver {
         for (Long l : linkedList) {
             System.out.println(l);
         }
+
+        System.out.println(linkedList.get(0));
+        System.out.println(linkedList.get(linkedList.size() - 1));
+        System.out.println(linkedList.get(2));
     }
 }
