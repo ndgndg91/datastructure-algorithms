@@ -28,7 +28,9 @@ public class MyHashMap<K, V> {
     }
 
     public V get(K key) {
-        return null;
+        int hash = hash(key);
+        int n = table.length;
+        return table[n-1 & hash].value;
     }
 
     public V put(K key, V value) {
