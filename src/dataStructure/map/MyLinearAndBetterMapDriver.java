@@ -1,6 +1,6 @@
 package dataStructure.map;
 
-public class MyLinearMapDriver {
+public class MyLinearAndBetterMapDriver {
 
     public static void main(String[] args) {
         MyLinearMap<Integer, String> myLinearMap = new MyLinearMap<>();
