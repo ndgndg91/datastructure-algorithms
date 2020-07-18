@@ -1,6 +1,6 @@
-package dataStructure.map;
+package datastructure.map;
 
-import dataStructure.map.test.Developer;
+import datastructure.map.test.Developer;
 
 public class MyHashMapDriver {
 

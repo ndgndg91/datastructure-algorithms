@@ -1,4 +1,4 @@
-package dataStructure;
+package datastructure;
 
 public class SystemArrayCopyTest {
     public static void main(String[] args) {

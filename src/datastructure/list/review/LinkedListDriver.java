@@ -1,4 +1,4 @@
-package dataStructure.list.review;
+package datastructure.list.review;
 
 
 public class LinkedListDriver {

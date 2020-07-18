@@ -1,4 +1,4 @@
-package dataStructure.map;
+package datastructure.map;
 
 public class MyLinearAndBetterMapDriver {
 

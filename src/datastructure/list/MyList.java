@@ -1,4 +1,4 @@
-package dataStructure.list;
+package datastructure.list;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
