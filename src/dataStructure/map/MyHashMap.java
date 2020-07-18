@@ -6,8 +6,9 @@ import java.util.Map;
 import java.util.Set;
 
 public class MyHashMap<K, V> implements Map<K, V> {
+    private static final float LOAD_FACTOR = 0.75F;
     private static final int INITIAL_CAPACITY = 16;
-    private Node<K, V>[] nodes;
+    private Node[] nodes;
     private int size;
 
     public MyHashMap(){
@@ -84,6 +85,11 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
     @Override
     public V put(K k, V v) {
+        float cf = (float) size / nodes.length;
+        if (cf >= LOAD_FACTOR) {
+            resize();
+        }
+
         int hash = hash(k);
         int index = index(k, hash);
 
@@ -123,9 +129,34 @@ public class MyHashMap<K, V> implements Map<K, V> {
         return hash;
     }
 
+    /**
+     * TODO rehash method implement
+     */
+    private void resize() {
+        int l = nodes.length * 2;
+        Node<K, V>[] nn = new Node[l];
+    }
+
     @Override
     public V remove(Object o) {
-        return null;
+        int hash = hash(o);
+        int index = index(o, hash);
+
+        Node<K, V> n = nodes[index];
+        while (true) {
+            Node<K, V> next = n.next;
+            if (n.hash == hash) {
+                nodes[index] = next;
+                size--;
+                return n.value;
+            }
+
+            if (next == null) {
+                return null;
+            }
+
+            n = next;
+        }
     }
 
     @Override
