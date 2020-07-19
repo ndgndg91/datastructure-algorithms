@@ -8,16 +8,18 @@ public class MyHashMapDriver {
     public static void main(String[] args) {
         MyHashMap<String, Developer> devMap = new MyHashMap<>();
         Developer ndg = new Developer("ndg", 30, "MALE", "JAVA");
+        Developer ndg2 = new Developer("ndg", 30, "MALE", "JAVA");
         Developer ljs = new Developer("ljs", 32, "MALE", "JAVA");
         Developer cyh = new Developer("cyh", 36, "MALE", "JAVA");
         Developer lks = new Developer("lks", 32, "MALE", "JAVA");
 
         devMap.put(ndg.getName(), ndg);
+        devMap.put(ndg2.getName(), ndg);
         devMap.put(ljs.getName(), ljs);
         devMap.put(cyh.getName(), cyh);
         devMap.put(lks.getName(), lks);
 
-        printMyMap(devMap, ndg, ljs, cyh, lks);
+        printMyMap(devMap, ndg, ndg2, ljs, cyh, lks);
 
         devMap.remove(ndg.getName());
         devMap.remove(ndg.getName());
