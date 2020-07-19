@@ -4,27 +4,24 @@ import datastructure.map.test.Developer;
 
 public class MyHashMapDriver {
 
+    //TODO 동일한 hashcode 는 어떻게 처리할 것인가?
     public static void main(String[] args) {
         MyHashMap<String, Developer> devMap = new MyHashMap<>();
         Developer ndg = new Developer("ndg", 30, "MALE", "JAVA");
-        Developer ndg2 = new Developer("ndg", 30, "MALE", "JAVA");
         Developer ljs = new Developer("ljs", 32, "MALE", "JAVA");
         Developer cyh = new Developer("cyh", 36, "MALE", "JAVA");
         Developer lks = new Developer("lks", 32, "MALE", "JAVA");
 
         devMap.put(ndg.getName(), ndg);
-        devMap.put(ndg2.getName(), ndg2);
         devMap.put(ljs.getName(), ljs);
         devMap.put(cyh.getName(), cyh);
         devMap.put(lks.getName(), lks);
-        devMap.put(null, null);
 
-        printMyMap(devMap, ndg, ndg2, ljs, cyh, lks);
+        printMyMap(devMap, ndg, ljs, cyh, lks);
 
         devMap.remove(ndg.getName());
-        devMap.remove(ndg2.getName());
 
-        printMyMap(devMap, ndg, ndg2, ljs, cyh, lks);
+        printMyMap(devMap, ndg, ljs, cyh, lks);
 
         Developer john = new Developer("john", 32, "MALE", "JAVA");
         Developer sara = new Developer("sara", 32, "FEMALE", "JAVA");
@@ -46,11 +43,12 @@ public class MyHashMapDriver {
         devMap.put(jane.getName(), jane);
         devMap.put(gil.getName(), gil);
 
-        printMyMap(devMap, ndg, ndg2, ljs, cyh, lks, john, sara, sue, ari, sue, brian, jin, jane);
+        printMyMap(devMap, ndg, ljs, cyh, lks, john, sara, suzi, sue, ari, sue, brian, jin, jane);
 
         devMap.clear();
 
-        printMyMap(devMap, ndg, ndg2, ljs, cyh, lks);
+        printMyMap(devMap, ndg, ljs, cyh, lks, john, sara, suzi, sue, ari, sue, brian, jin, jane);
+
     }
 
     private static void printMyMap(

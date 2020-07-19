@@ -85,6 +85,10 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
     @Override
     public V put(K k, V v) {
+        if (k == null || v == null) {
+            return null;
+        }
+
         float cf = (float) size / nodes.length;
         if (cf >= LOAD_FACTOR) {
             resize();
@@ -129,12 +133,24 @@ public class MyHashMap<K, V> implements Map<K, V> {
         return hash;
     }
 
-    /**
-     * TODO rehash method implement
-     */
     private void resize() {
         int l = nodes.length * 2;
         Node<K, V>[] nn = new Node[l];
+        for (int idx = 0; idx < nodes.length; idx++) {
+            if (nodes[idx] == null) {
+                continue;
+            }
+
+            if (nodes[idx].next != null) {
+                nn[idx] = nodes[idx];
+            } else {
+                Node<K, V> h = nn[idx];
+                for (Node<K, V> n = nodes[idx]; n.next != null; n = n.next) {
+                    h.next = n;
+                    h = n;
+                }
+            }
+        }
     }
 
     @Override
