@@ -4,7 +4,6 @@ import datastructure.map.test.Developer;
 
 public class MyHashMapDriver {
 
-    //TODO 동일한 hashcode 는 어떻게 처리할 것인가?
     public static void main(String[] args) {
         MyHashMap<String, Developer> devMap = new MyHashMap<>();
         Developer ndg = new Developer("ndg", 30, "MALE", "JAVA");
@@ -19,9 +18,8 @@ public class MyHashMapDriver {
         devMap.put(cyh.getName(), cyh);
         devMap.put(lks.getName(), lks);
 
-        printMyMap(devMap, ndg, ndg2, ljs, cyh, lks);
+        printMyMap(devMap, ndg, ljs, cyh, lks);
 
-        devMap.remove(ndg.getName());
         devMap.remove(ndg.getName());
 
         printMyMap(devMap, ndg, ljs, cyh, lks);

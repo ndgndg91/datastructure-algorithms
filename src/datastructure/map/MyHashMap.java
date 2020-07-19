@@ -99,11 +99,23 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
         if (nodes[index] == null) {
             nodes[index] = new Node<>(k, v, null, hash);
+            size++;
         } else  {
             Node<K, V> first = nodes[index];
+            if (first.hash == hash) {
+                nodes[index] = new Node<>(k, v, null, hash);
+                return v;
+            }
+
             while (true) {
+                if (first.next != null && first.next.hash == hash) {
+                    first.next = new Node<>(k, v, null, hash);
+                    return v;
+                }
+
                 if (first.next == null) {
                     first.next = new Node<>(k, v, null, hash);
+                    size++;
                     break;
                 }
 
@@ -111,7 +123,6 @@ public class MyHashMap<K, V> implements Map<K, V> {
             }
         }
 
-        size++;
         return v;
     }
 
