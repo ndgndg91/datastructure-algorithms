@@ -155,12 +155,21 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
     @Override
     public V remove(Object o) {
+        if (o == null) {
+            return null;
+        }
+
         int hash = hash(o);
         int index = index(o, hash);
 
         Node<K, V> n = nodes[index];
+        if (n == null) {
+            return null;
+        }
+
         while (true) {
             Node<K, V> next = n.next;
+
             if (n.hash == hash) {
                 nodes[index] = next;
                 size--;

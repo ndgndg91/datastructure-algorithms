@@ -20,6 +20,7 @@ public class MyHashMapDriver {
         printMyMap(devMap, ndg, ljs, cyh, lks);
 
         devMap.remove(ndg.getName());
+        devMap.remove(ndg.getName());
 
         printMyMap(devMap, ndg, ljs, cyh, lks);
 
