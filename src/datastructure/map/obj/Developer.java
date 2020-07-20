@@ -1,4 +1,4 @@
-package datastructure.map.test;
+package datastructure.map.obj;
 
 import java.util.Objects;
 
