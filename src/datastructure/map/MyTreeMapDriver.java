@@ -3,14 +3,15 @@ package datastructure.map;
 import datastructure.map.obj.Member;
 
 public class MyTreeMapDriver {
-
+    private static MyTreeMap<Long, Member> MEMBER_MY_TREE_MAP = new MyTreeMap<>();
     public static void main(String[] args) {
-        MyTreeMap<Long, Member> memberMyTreeMap = new MyTreeMap<>();
-        putMembers(memberMyTreeMap);
+        putMembers(MEMBER_MY_TREE_MAP);
 
         Member member10 = find(10);
+        print(member10);
 
         Member member5 = find(5);
+        print(member5);
     }
 
     private static void putMembers(MyTreeMap<Long, Member> memberMyTreeMap){
@@ -36,7 +37,7 @@ public class MyTreeMapDriver {
     }
 
     private static Member find(long key) {
-        return null;
+        return MEMBER_MY_TREE_MAP.get(key);
     }
 
     private static void print(Member member) {

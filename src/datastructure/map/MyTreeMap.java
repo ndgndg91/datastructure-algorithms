@@ -149,12 +149,72 @@ public class MyTreeMap<K, V> implements NavigableMap<K, V> {
     }
 
     @Override
-    public V get(Object o) {
+    public V get(Object k) {
+        if (k == null) {
+            return null;
+        }
+
+        Comparable key = (Comparable) k;
+        TreeNode<K, V> t = this.root;
+
+        while (t != null) {
+            int cmp = key.compareTo(t.key);
+            if (cmp < 0) {
+                t = t.left;
+            } else  {
+                if (cmp <= 0) {
+                    return t.value;
+                }
+
+                t = t.right;
+            }
+        }
+
         return null;
     }
 
     @Override
     public V put(K k, V v) {
+        TreeNode<K, V> t = this.root;
+        TreeNode<K, V> parent;
+        if (t == null) {
+            this.root = new TreeNode<>(k, v, null);
+            this.size = 1;
+        } else {
+            if (k == null) {
+                throw new NullPointerException();
+            }
+
+            Comparable key = (Comparable) k;
+            int cmp;
+
+            do {
+                parent = t;
+                cmp = key.compareTo(t.key);
+                if (cmp < 0) {
+                    t = t.left;
+                } else {
+                    if (cmp <= 0) {
+                        return t.setValue(v);
+                    }
+
+                    t = t.right;
+                }
+            } while (t != null);
+
+
+            TreeNode<K, V> e = new TreeNode<>(k, v, parent);
+            if (cmp < 0) {
+                parent.left = e;
+            } else {
+                parent.right = e;
+            }
+
+//            TODO jdk TreeMap method 까기
+//            this.fixAfterInsertion(e);
+            this.size++;
+        }
+
         return null;
     }
 
@@ -189,7 +249,6 @@ public class MyTreeMap<K, V> implements NavigableMap<K, V> {
         return null;
     }
 
-
     private static class TreeNode<K, V> implements Map.Entry<K, V> {
         K key;
         V value;
@@ -197,11 +256,9 @@ public class MyTreeMap<K, V> implements NavigableMap<K, V> {
         TreeNode<K, V> right;
         TreeNode<K, V> parent;
 
-        public TreeNode(K key, V value, TreeNode<K, V> left, TreeNode<K, V> right, TreeNode<K, V> parent) {
+        public TreeNode(K key, V value, TreeNode<K, V> parent) {
             this.key = key;
             this.value = value;
-            this.left = left;
-            this.right = right;
             this.parent = parent;
         }
 
