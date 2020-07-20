@@ -210,7 +210,7 @@ public class MyTreeMap<K, V> implements NavigableMap<K, V> {
                 parent.right = e;
             }
 
-//            TODO jdk TreeMap method 까기
+//            TODO jdk TreeMap method 까
 //            this.fixAfterInsertion(e);
             this.size++;
         }
@@ -255,6 +255,7 @@ public class MyTreeMap<K, V> implements NavigableMap<K, V> {
         TreeNode<K, V> left;
         TreeNode<K, V> right;
         TreeNode<K, V> parent;
+        boolean color; //TODO red, black node
 
         public TreeNode(K key, V value, TreeNode<K, V> parent) {
             this.key = key;
