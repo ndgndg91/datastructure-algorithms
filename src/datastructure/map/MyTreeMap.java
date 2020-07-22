@@ -210,13 +210,143 @@ public class MyTreeMap<K, V> implements NavigableMap<K, V> {
                 parent.right = e;
             }
 
-//            TODO jdk TreeMap method 까
-//            this.fixAfterInsertion(e);
+            this.fixAfterInsertion(e);
             this.size++;
         }
 
+        printCurrentTree(this.root, 1, null);
+        System.out.println("one cycle!");
         return null;
     }
+
+    private void printCurrentTree(TreeNode<K, V> root, int depth, String leftOrRight){
+        leftOrRight = leftOrRight == null ? "root" : leftOrRight;
+        System.out.print("depth : " + depth + "\tdirection : " + leftOrRight + "\t");
+        System.out.println(root.value);
+        System.out.println();
+        if (root.left != null) {
+            printCurrentTree(root.left, depth + 1, "left");
+        }
+
+        if (root.right != null) {
+            printCurrentTree(root.right, depth + 1, "right");
+        }
+    }
+
+    private void fixAfterInsertion(TreeNode<K, V> x) {
+        x.color = false;
+
+        while(x != null && x != this.root && !x.parent.color) {
+            TreeNode<K, V> y;
+            if (parentOf(x) == leftOf(parentOf(parentOf(x)))) {
+                y = rightOf(parentOf(parentOf(x)));
+                if (!colorOf(y)) {
+                    setColor(parentOf(x), true);
+                    setColor(y, true);
+                    setColor(parentOf(parentOf(x)), false);
+                    x = parentOf(parentOf(x));
+                } else {
+                    if (x == rightOf(parentOf(x))) {
+                        x = parentOf(x);
+                        this.rotateLeft(x);
+                    }
+
+                    setColor(parentOf(x), true);
+                    setColor(parentOf(parentOf(x)), false);
+                    this.rotateRight(parentOf(parentOf(x)));
+                }
+            } else {
+                y = leftOf(parentOf(parentOf(x)));
+                if (!colorOf(y)) {
+                    setColor(parentOf(x), true);
+                    setColor(y, true);
+                    setColor(parentOf(parentOf(x)), false);
+                    x = parentOf(parentOf(x));
+                } else {
+                    if (x == leftOf(parentOf(x))) {
+                        x = parentOf(x);
+                        this.rotateRight(x);
+                    }
+
+                    setColor(parentOf(x), true);
+                    setColor(parentOf(parentOf(x)), false);
+                    this.rotateLeft(parentOf(parentOf(x)));
+                }
+            }
+        }
+
+        this.root.color = true;
+    }
+
+    private static <K, V> TreeNode<K, V> parentOf(TreeNode<K, V> p) {
+        return p == null ? null : p.parent;
+    }
+
+    private static <K, V> TreeNode<K, V> leftOf(TreeNode<K, V> p) {
+        return p == null ? null : p.left;
+    }
+
+    private static <K, V> TreeNode<K, V> rightOf(TreeNode<K, V> p) {
+        return p == null ? null : p.right;
+    }
+
+    private static <K, V> void setColor(TreeNode<K, V> p, boolean c) {
+        if (p != null) {
+            p.color = c;
+        }
+
+    }
+
+    private void rotateLeft(TreeNode<K, V> p) {
+        if (p != null) {
+            TreeNode<K, V> r = p.right;
+            p.right = r.left;
+            if (r.left != null) {
+                r.left.parent = p;
+            }
+
+            r.parent = p.parent;
+            if (p.parent == null) {
+                this.root = r;
+            } else if (p.parent.left == p) {
+                p.parent.left = r;
+            } else {
+                p.parent.right = r;
+            }
+
+            r.left = p;
+            p.parent = r;
+        }
+
+    }
+
+    private void rotateRight(TreeNode<K, V> p) {
+        if (p != null) {
+            TreeNode<K, V> l = p.left;
+            p.left = l.right;
+            if (l.right != null) {
+                l.right.parent = p;
+            }
+
+            l.parent = p.parent;
+            if (p.parent == null) {
+                this.root = l;
+            } else if (p.parent.right == p) {
+                p.parent.right = l;
+            } else {
+                p.parent.left = l;
+            }
+
+            l.right = p;
+            p.parent = l;
+        }
+
+    }
+
+    private static <K, V> boolean colorOf(TreeNode<K, V> p) {
+        return p == null || p.color;
+    }
+
 
     @Override
     public V remove(Object o) {
