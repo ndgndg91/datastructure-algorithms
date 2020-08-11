@@ -47,12 +47,10 @@ public class TruckCrossingBridge {
             return bridge.length + 1;
         }
 
-        Truck firstTruck = waitingTrucks.poll();
-        bridge.enter(firstTruck);
-        while (!waitingTrucks.isEmpty()) {
+        while (!bridge.trucksOnMe.isEmpty() || !waitingTrucks.isEmpty()) {
             time++;
 
-            if (bridge.trucksOnMe.get(0).position == bridge_length+1) {
+            if (!bridge.trucksOnMe.isEmpty() && bridge.trucksOnMe.get(0).position == bridge_length) {
                 bridge.trucksOnMe.remove(0);
             }
 
@@ -72,7 +70,7 @@ public class TruckCrossingBridge {
     private static class Bridge {
         public final int length;
         public final int weight;
-        public List<Truck> trucksOnMe = new LinkedList<>();
+        public final List<Truck> trucksOnMe = new LinkedList<>();
 
         public Bridge(int length, int weight) {
             this.length = length;
