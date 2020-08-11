@@ -1,4 +1,4 @@
-package algorithms.programers.JobFair.UsingItem;
+package algorithms.programers.jobfair.UsingItem;
 
 import java.util.ArrayList;
 class Solution {

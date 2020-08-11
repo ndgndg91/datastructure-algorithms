@@ -1,4 +1,4 @@
-package algorithms.programers.JobFair.SumOfPrime;
+package algorithms.programers.jobfair.SumOfPrime;
 
 import java.util.ArrayList;
 class Solution {

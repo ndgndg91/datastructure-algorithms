@@ -1,4 +1,4 @@
-package algorithms.programers.Practice.MakeWeirdString;
+package algorithms.programers.practice.MakeWeirdString;
 
 class Solution {
     public static String solution(String s) {

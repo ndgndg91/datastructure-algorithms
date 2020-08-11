@@ -1,8 +1,8 @@
-package algorithms.programers.Greedy.GymSuit;
+package algorithms.programers.greedy;
 
 
 
-class Solution {
+class GymSuit {
     public static int solution(int n, int[] lost, int[] reserve) {
         int answer = n - lost.length;
         for (int i = 0; i < lost.length; i++) {

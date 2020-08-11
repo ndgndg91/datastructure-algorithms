@@ -1,4 +1,4 @@
-package algorithms.programers.JobFair.DistributesTshirts;
+package algorithms.programers.jobfair.DistributesTshirts;
 class Solution {
     public int solution(int[] people, int[] tshirts) {
         int answer = 0;

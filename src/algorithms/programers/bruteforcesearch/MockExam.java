@@ -1,7 +1,7 @@
-package algorithms.programers.BruteForceSearch.MockExam;
+package algorithms.programers.bruteforcesearch;
 
 import java.util.*;
-class Solution {
+class MockExam {
     public int[] solution(int[] answers) {
         int[] scores = new int[3];
         int[][] mathGiveUp = {

@@ -1,4 +1,4 @@
-package algorithms.programers.Practice.BaseString;
+package algorithms.programers.practice.BaseString;
 
 class Solution {
     public static boolean solution(String s) {

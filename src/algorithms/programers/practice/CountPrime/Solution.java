@@ -1,4 +1,4 @@
-package algorithms.programers.Practice.CountPrime;
+package algorithms.programers.practice.CountPrime;
 
 class Solution {
     public static int solution(int n) {

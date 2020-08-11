@@ -1,8 +1,8 @@
-package algorithms.programers.Sort.KthNumber;
+package algorithms.programers.sort;
 
 import java.util.Arrays;
 
-class Solution {
+class KthNumber {
     public static int[] solution(int[] array, int[][] commands) {
         int[] answer = new int[commands.length];
         for (int i = 0; i < commands.length; i++){
