@@ -1,8 +1,9 @@
 package algorithms.programers.greedy;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
 public class MakeBigNumber {
     private static final String number = "1924";
@@ -17,33 +18,49 @@ public class MakeBigNumber {
     private static final int k3 = 4;
     private static final int result3 = 775841;
 
+    private static final String number4 = "99881";
+    private static final int k4 = 2;
+    private static final int result4 = 998;
+
     public static void main(String[] args) {
-        String solution = solution(number, k);
-        System.out.println(solution.equals(result));
+        String solution = solution(number4, k4);
         System.out.println(solution);
     }
 
     private static String solution(String number, int k) {
-        Set<Long> bowl = new HashSet<>();
-        while (k != 0) {
+        StringBuilder result = new StringBuilder();
+
+        Stack<Character> stack = new Stack<>();
+        int resultLength = number.length() - k;
+
+        while (k > 0) {
             for (int i = 0; i < number.length(); i++) {
-                StringBuilder temp = new StringBuilder();
-                for (int j = 0; j < number.length(); j++) {
-                    if (i == j)
-                        continue;
-                    temp.append(number.charAt(j));
+                char c = number.charAt(i);
+                if (k == 0) {
+                    stack.push(c);
+                    continue;
                 }
 
-                long max = Long.parseLong(temp.toString());
-                bowl.add(max);
+                while (!stack.isEmpty() && stack.peek() < c) {
+                    stack.pop();
+                    k--;
+                    if (k == 0) break;
+                }
+
+                stack.push(c);
             }
 
-            number = String.valueOf(Collections.max(bowl));
-            bowl.clear();
-            k--;
+            while (stack.size() > resultLength) {
+                stack.pop();
+                k--;
+            }
         }
 
-        return number;
+        while(!stack.isEmpty()) {
+            result.insert(0, stack.pop());
+        }
+
+        return result.toString();
     }
 
 }
