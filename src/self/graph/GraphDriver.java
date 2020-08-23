@@ -12,6 +12,10 @@ public class GraphDriver {
         Arrays.stream(EDGES).forEach(e -> graph.addEdge(e[0], e[1]));
 
         System.out.println(graph);
+        graph.addVertex(100);
+        graph.addVertex(10);
+
+        System.out.println(graph);
     }
 
 

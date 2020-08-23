@@ -5,13 +5,13 @@ import java.util.*;
 public class Graph{
     private final Map<Vertex, List<Vertex>> adjVertices;
 
-    public Graph(){
+    protected Graph(){
         this.adjVertices = new HashMap<>();
     }
 
-    static Set<Object> depthFirstTraversal(Graph graph, String root) {
+    protected static Set<Object> depthFirstTraversal(Graph graph, String root) {
         Set<Object> visited = new LinkedHashSet<>();
-        Stack<Object> stack = new Stack<>();
+        Deque<Object> stack = new ArrayDeque<>();
         stack.push(root);
         while (!stack.isEmpty()) {
             Object vertex = stack.pop();
@@ -25,7 +25,7 @@ public class Graph{
         return visited;
     }
 
-    static Set<Object> breadthFirstTraversal(Graph graph, String root) {
+    protected static Set<Object> breadthFirstTraversal(Graph graph, String root) {
         Set<Object> visited = new LinkedHashSet<>();
         Queue<Object> queue = new LinkedList<>();
         queue.add(root);
@@ -42,17 +42,17 @@ public class Graph{
         return visited;
     }
 
-    void addVertex(Object value) {
+    protected void addVertex(Object value) {
         adjVertices.putIfAbsent(new Vertex(value), new ArrayList<>());
     }
 
-    void removeVertex(String label) {
-        Vertex v = new Vertex(label);
+    protected void removeVertex(String value) {
+        Vertex v = new Vertex(value);
         adjVertices.values().forEach(e -> e.remove(v));
-        adjVertices.remove(new Vertex(label));
+        adjVertices.remove(new Vertex(value));
     }
 
-    public void addEdge(Object a, Object b) {
+    protected void addEdge(Object a, Object b) {
         Vertex v1 = new Vertex(a);
         Vertex v2 = new Vertex(b);
         adjVertices.putIfAbsent(v1, new ArrayList<>());
@@ -61,9 +61,9 @@ public class Graph{
         adjVertices.get(v2).add(v1);
     }
 
-    void removeEdge(String label1, String label2) {
-        Vertex v1 = new Vertex(label1);
-        Vertex v2 = new Vertex(label2);
+    protected void removeEdge(String value1, String value2) {
+        Vertex v1 = new Vertex(value1);
+        Vertex v2 = new Vertex(value2);
         List<Vertex> eV1 = adjVertices.get(v1);
         List<Vertex> eV2 = adjVertices.get(v2);
         if (eV1 != null)
@@ -72,7 +72,7 @@ public class Graph{
             eV2.remove(v1);
     }
 
-    List<Vertex> getAdjVertices(Object value) {
+    protected List<Vertex> getAdjVertices(Object value) {
         return adjVertices.get(new Vertex(value));
     }
 
