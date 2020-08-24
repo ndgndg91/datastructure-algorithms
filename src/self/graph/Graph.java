@@ -9,39 +9,6 @@ public class Graph{
         this.adjVertices = new HashMap<>();
     }
 
-    protected static Set<Object> depthFirstTraversal(Graph graph, String root) {
-        Set<Object> visited = new LinkedHashSet<>();
-        Deque<Object> stack = new ArrayDeque<>();
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            Object vertex = stack.pop();
-            if (!visited.contains(vertex)) {
-                visited.add(vertex);
-                for (Vertex v : graph.getAdjVertices(vertex)) {
-                    stack.push(v.value);
-                }
-            }
-        }
-        return visited;
-    }
-
-    protected static Set<Object> breadthFirstTraversal(Graph graph, String root) {
-        Set<Object> visited = new LinkedHashSet<>();
-        Queue<Object> queue = new LinkedList<>();
-        queue.add(root);
-        visited.add(root);
-        while (!queue.isEmpty()) {
-            Object vertex = queue.poll();
-            for (Vertex v : graph.getAdjVertices(vertex)) {
-                if (!visited.contains(v.value)) {
-                    visited.add(v.value);
-                    queue.add(v.value);
-                }
-            }
-        }
-        return visited;
-    }
-
     protected void addVertex(Object value) {
         adjVertices.putIfAbsent(new Vertex(value), new ArrayList<>());
     }
@@ -72,8 +39,8 @@ public class Graph{
             eV2.remove(v1);
     }
 
-    protected List<Vertex> getAdjVertices(Object value) {
-        return adjVertices.get(new Vertex(value));
+    protected List<Vertex> getAdjVertices(Vertex vertex) {
+        return adjVertices.get(vertex);
     }
 
     @Override
@@ -83,8 +50,8 @@ public class Graph{
                 .toString();
     }
 
-    private static class Vertex {
-        private final Object value;
+    protected static class Vertex {
+        protected final Object value;
 
         Vertex(Object value) {
             this.value = value;

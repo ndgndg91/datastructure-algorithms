@@ -1,6 +1,6 @@
 package self.graph;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class GraphDriver {
     
@@ -16,7 +16,45 @@ public class GraphDriver {
         graph.addVertex(10);
 
         System.out.println(graph);
+
+        graph.addEdge(10,100);
+        depthFirstTraversal(graph, new Graph.Vertex(0));
+        breadthFirstTraversal(graph, new Graph.Vertex(0));
     }
 
+    private static Set<Graph.Vertex> depthFirstTraversal(Graph graph, Graph.Vertex root) {
+        Set<Graph.Vertex> visited = new LinkedHashSet<>();
+        Deque<Graph.Vertex> stack = new ArrayDeque<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Graph.Vertex vertex = stack.pop();
+            if (!visited.contains(vertex)) {
+                visited.add(vertex);
+                stack.clear();
+                for (Graph.Vertex v : graph.getAdjVertices(vertex)) {
+                    if (visited.contains(v)) continue;
+                    stack.push(v);
+                }
+            }
+        }
+        return visited;
+    }
+
+    private static Set<Graph.Vertex> breadthFirstTraversal(Graph graph, Graph.Vertex root) {
+        Set<Graph.Vertex> visited = new LinkedHashSet<>();
+        Queue<Graph.Vertex> queue = new LinkedList<>();
+        queue.add(root);
+        visited.add(root);
+        while (!queue.isEmpty()) {
+            Graph.Vertex vertex = queue.poll();
+            for (Graph.Vertex v : graph.getAdjVertices(vertex)) {
+                if (!visited.contains(v)) {
+                    visited.add(v);
+                    queue.add(v);
+                }
+            }
+        }
+        return visited;
+    }
 
 }
