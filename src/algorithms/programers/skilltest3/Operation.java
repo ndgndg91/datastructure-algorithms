@@ -1,5 +1,11 @@
 package algorithms.programers.skilltest3;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Operation {
 
 //    문제 설명
@@ -21,10 +27,71 @@ public class Operation {
 //            [I 16,D 1]	[0,0]
 //            [I 7,I 5,I -5,D -1]	[7,5]
 //    입출력 예 설명
-//16을 삽입 후 최댓값을 삭제합니다. 비어있으므로 [0,0]을 반환합니다.
-//            7,5,-5를 삽입 후 최솟값을 삭제합니다. 최대값 7, 최소값 5를 반환합니다
-//
-    public static void main(String[] args) {
+//    16을 삽입 후 최댓값을 삭제합니다. 비어있으므로 [0,0]을 반환합니다.
+//    7,5,-5를 삽입 후 최솟값을 삭제합니다. 최대값 7, 최소값 5를 반환합니다
 
+    public static void main(String[] args) {
+        int[] solution = solution(new String[]{"I 16", "D 1"});
+        Arrays.stream(solution).forEach(s -> System.out.print(s+"\t"));
+
+        System.out.println();
+        int[] solution2 = solution(new String[]{"I 7","I 5","I -5","D -1"});
+        Arrays.stream(solution2).forEach(s -> System.out.print(s+"\t"));
+    }
+
+    private static int[] solution(String[] operations) {
+        var commands = Arrays.stream(operations).map(s -> {
+            String[] split = s.split(" ");
+            return new Command(split[0], Integer.parseInt(split[1]));
+        }).collect(Collectors.toList());
+
+        List<Integer> results = new ArrayList<>();
+        for (var command : commands) {
+            if (command.type == Command.Type.I) {
+                results.add(command.value);
+            }
+
+            if (command.type == Command.Type.D) {
+                if (command.value == -1) {
+                    Integer min = Collections.min(results);
+                    results.remove(min);
+                }
+
+                if (command.value == 1) {
+                    Integer max = Collections.max(results);
+                    results.remove(max);
+                }
+
+                if (command.value > 1) {
+                    results.add(command.value);
+                }
+            }
+        }
+
+        if (results.isEmpty()) return new int[]{0,0};
+        return new int[]{Collections.max(results), Collections.min(results)};
+    }
+
+    static class Command {
+        private enum Type {
+            I,
+            D;
+        }
+
+        private final Type type;
+        private final int value;
+
+        public Command(String type, int value) {
+            this.type = Type.valueOf(type);
+            this.value = value;
+        }
+
+        public Type getType() {
+            return type;
+        }
+
+        public int getValue() {
+            return value;
+        }
     }
 }
