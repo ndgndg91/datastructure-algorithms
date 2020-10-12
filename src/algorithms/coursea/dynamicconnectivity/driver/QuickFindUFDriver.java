@@ -1,11 +1,13 @@
-package algorithms.coursea.dynamicconnectivity;
+package algorithms.coursea.dynamicconnectivity.driver;
+
+import algorithms.coursea.dynamicconnectivity.QuickFindUF;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Driver {
+public class QuickFindUFDriver {
 
     public static void main(String[] args) {
         try (BufferedReader br = new BufferedReader(new FileReader("resources/dynamic-connectivity.txt")) ) {
@@ -19,10 +21,12 @@ public class Driver {
             }
 
             String[] tokens = sb.toString().split("\n");
-            UF uf = new UF(Integer.parseInt(tokens[0]));
+            QuickFindUF uf = new QuickFindUF(Integer.parseInt(tokens[0]));
+
             for (int i = 1; i < tokens.length; i++) {
                 String[] numbers = tokens[i].split(" ");
                 uf.union(Integer.parseInt(numbers[0]), Integer.parseInt(numbers[1]));
+                System.out.println(uf);
             }
 
             System.out.println(uf);
