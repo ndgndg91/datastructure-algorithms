@@ -4,7 +4,7 @@ import java.util.*;
 
 class BalanceHero {
 
-    @Test
+    @org.junit.jupiter.api.Test
     void test(){
         List list = new ArrayList<>();
         list.add(1);
@@ -17,7 +17,7 @@ class BalanceHero {
         System.out.println(Collections.binarySearch(list, 4));
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void treeSet(){
         //given
         TreeSet s1 = new TreeSet();
@@ -40,7 +40,7 @@ class BalanceHero {
         //then
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void first(){
         int input1 = 6;
         int[] answer = new int[input1];
@@ -64,17 +64,14 @@ class BalanceHero {
             System.out.print(a + "\t");
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void second() {
-        int input1 = 5;
         int[] input2 = {1,2,9,9,9};
-        int answer = 0;
 
         for (int i = input2.length - 1; i >= 0; i--) {
             if (input2[i] == 9) continue;
-            answer = i + 1;
-            break;
             System.out.println(input2[i]);
+            break;
         }
     }
 }
