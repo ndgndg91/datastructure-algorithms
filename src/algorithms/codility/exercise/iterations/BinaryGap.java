@@ -45,4 +45,22 @@ public class BinaryGap {
         return max;
     }
 
+    int solution2(int N) {
+        // write your code in Java SE 8
+        String s = Integer.toBinaryString(N);
+
+        //when
+        int count = 0;
+        int length = 0;
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i) == '0') count++;
+            if (s.charAt(i) == '1') {
+                length = Math.max(length, count);
+                count = 0;
+            }
+        }
+
+        return length;
+    }
+
 }
