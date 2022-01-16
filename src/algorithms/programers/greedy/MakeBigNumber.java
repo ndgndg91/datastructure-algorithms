@@ -1,6 +1,8 @@
 package algorithms.programers.greedy;
 
 
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class MakeBigNumber {
@@ -28,7 +30,7 @@ public class MakeBigNumber {
     private static String solution(String number, int k) {
         StringBuilder result = new StringBuilder();
 
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> stack = new LinkedList<>();
         int resultLength = number.length() - k;
 
         while (k > 0) {
