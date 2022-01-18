@@ -15,10 +15,10 @@ public class PermMissingElem {
     }
 
     public int solution(int[] A) {
-        int sum = (A.length + 1) * (A.length + 1 + 1) / 2;
+        long sum = (long) (A.length + 1) * (A.length + 1 + 1) / 2;
         logger.info("sum : " + sum);
-        int reduce = Arrays.stream(A).reduce(0, Integer::sum);
+        long reduce = Arrays.stream(A).asLongStream().reduce(0, Long::sum);
         logger.info("reduce : " + reduce);
-        return sum - reduce;
+        return (int) (sum - reduce);
     }
 }
