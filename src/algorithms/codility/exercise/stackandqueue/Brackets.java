@@ -1,4 +1,4 @@
-package algorithms.codility.brackets;
+package algorithms.codility.exercise.stackandqueue;
 
 import java.util.*;
 
@@ -26,7 +26,12 @@ import java.util.*;
 //string S consists only of the following characters: "(", "{", "[", "]", "}" and/or ")".
 //Copyright 2009–2020 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.
 
-class Solution {
+class Brackets {
+    public static void main(String[] args) {
+        final var brackets = new Brackets();
+        int solution = brackets.solution("{}");
+        System.out.println(solution);
+    }
     public int solution(String S) {
         // write your code in Java SE 8
         Deque<Character> brackets = new ArrayDeque<>();
