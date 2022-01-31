@@ -38,6 +38,12 @@ package self.sort;
  * stable algorithm
  *
  * memory issue - there's a lot of temporary array instances created.
+ * stack example
+ *              mergeSort(a, 1, 2) mergeSort(a, 2, 3)   mergeSort(a, 3, 4), mergeSort(a, 4, 5)	mergeSort(a, 5, 6) mergeSort(6, 7)
+ *    mergeSort(a, 0, 1)    mergeSort(a, 1, 3),				mergeSortAsc(a, 3, 5) 	                mergeSortAsc(a, 5, 7)
+ *               mergeSort(a, 0, 3),								        mergeSort(a, 3, 7)
+ *                                              mergeSort(a, 0, 7)
+ *                                                  asc(a, 0, 7)
  */
 public class MergeSort {
 
