@@ -12,6 +12,11 @@ public class InsertionSort {
         ArrayPrintable.printArray(array);
         System.out.println();
 
+        ascRecursive(array, array.length);
+
+        ArrayPrintable.printArray(array);
+        System.out.println();
+
         desc(array);
 
         ArrayPrintable.printArray(array);
@@ -20,6 +25,12 @@ public class InsertionSort {
         asc(array);
 
         ArrayPrintable.printArray(array);
+        System.out.println();
+
+        descRecursive(array, array.length);
+
+        ArrayPrintable.printArray(array);
+
     }
 
     private static void desc(final int[] array) {
@@ -46,5 +57,39 @@ public class InsertionSort {
 
             array[i] = newElement;
         }
+    }
+
+    private static void ascRecursive(int[] input, int numItems) {
+        if (numItems < 2) {
+            return;
+        }
+
+        ascRecursive(input, numItems - 1);
+
+        var newElement = input[numItems - 1];
+
+        int i;
+        for (i = numItems - 1; i > 0 && input[i - 1] > newElement; i--)  {
+            input[i] = input[i - 1];
+        }
+
+        input[i] = newElement;
+    }
+
+    private static void descRecursive(int[] input, int numItems) {
+        if (numItems < 2) {
+            return;
+        }
+
+        descRecursive(input, numItems - 1);
+
+        var newElement = input[numItems - 1];
+
+        int i;
+        for (i = numItems - 1; i > 0 && input[i - 1] < newElement; i--)  {
+            input[i] = input[i - 1];
+        }
+
+        input[i] = newElement;
     }
 }
