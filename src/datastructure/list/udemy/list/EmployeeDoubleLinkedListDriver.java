@@ -1,4 +1,4 @@
-package datastructure.list.udemy;
+package datastructure.list.udemy.list;
 
 public class EmployeeDoubleLinkedListDriver {
 
