@@ -4,7 +4,7 @@ package datastructure.list.udemy.tree;
  *          25
  *        20  27
  *      15 22 26 30
- *              29 32
+ *       17     29 32
  * Traversal
  * - level - visit nodes on each level = 25, 20, 27, 15, 22, 26, 30, 29, 32
  * - pre-order - visit the root of every subtree first = 25, 20, 15, 22, 27, 26, 30, 29, 32
@@ -35,9 +35,12 @@ public class Main {
         tree.insert(26);
         tree.insert(22);
         tree.insert(32);
+        tree.insert(17);
 
-        tree.traversInOrder();
-        System.out.println();
+//        tree.traversInOrder();
+//        System.out.println();
+
+        tree.traversPreOrder();
 
 //        System.out.println(tree.get(27));
 //        System.out.println(tree.get(17));
@@ -46,16 +49,16 @@ public class Main {
 //        System.out.println(tree.max());
 //        System.out.println(tree.min());
 
-        tree.delete(15);
-        tree.traversInOrder();
-        System.out.println();
+//        tree.delete(15);
+//        tree.traversInOrder();
+//        System.out.println();
 
-        tree.delete(27);
-        tree.traversInOrder();
-        System.out.println();
+//        tree.delete(27);
+//        tree.traversInOrder();
+//        System.out.println();
 
-        tree.delete(25);
-        tree.traversInOrder();
-        System.out.println();
+//        tree.delete(25);
+//        tree.traversInOrder();
+//        System.out.println();
     }
 }
