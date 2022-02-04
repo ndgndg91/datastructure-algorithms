@@ -45,6 +45,17 @@ public class Heap {
         return deletedValue;
     }
 
+    public void sort() {
+        int lastHeapIndex = size - 1;
+        for (var i = 0; i < lastHeapIndex; i++) {
+            int tmp = heap[0];
+            heap[0] = heap[lastHeapIndex - i];
+            heap[lastHeapIndex - i] = tmp;
+
+            fixHeapBelow(0, lastHeapIndex - i - 1);
+        }
+    }
+
     private void fixHeapBelow(int index, int lastHeapIndex) {
         int childToSwap;
 
