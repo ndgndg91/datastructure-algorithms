@@ -1,6 +1,4 @@
-package datastructure.list.udemy.hashtable;
-
-import datastructure.list.udemy.hashtable.Person;
+package datastructure.udemy.hashtable;
 
 public class StoredPerson {
 

@@ -1,8 +1,8 @@
-package datastructure.list.udemy.hashtable.chained;
+package datastructure.udemy.hashtable.chained;
 
 
-import datastructure.list.udemy.hashtable.Person;
-import datastructure.list.udemy.hashtable.StoredPerson;
+import datastructure.udemy.hashtable.Person;
+import datastructure.udemy.hashtable.StoredPerson;
 
 import java.util.Iterator;
 import java.util.LinkedList;

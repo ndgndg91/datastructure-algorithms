@@ -1,6 +1,6 @@
-package datastructure.list.udemy.hashtable.simple;
+package datastructure.udemy.hashtable.simple;
 
-import datastructure.list.udemy.hashtable.Person;
+import datastructure.udemy.hashtable.Person;
 
 /**
  * does not handle hash collision

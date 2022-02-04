@@ -1,4 +1,4 @@
-package datastructure.list.udemy.tree;
+package datastructure.udemy.tree;
 
 /**
  *          25

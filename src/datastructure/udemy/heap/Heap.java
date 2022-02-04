@@ -1,4 +1,4 @@
-package datastructure.list.udemy.heap;
+package datastructure.udemy.heap;
 
 public class Heap {
     private int[] heap;

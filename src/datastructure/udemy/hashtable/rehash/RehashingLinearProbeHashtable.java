@@ -1,7 +1,7 @@
-package datastructure.list.udemy.hashtable.rehash;
+package datastructure.udemy.hashtable.rehash;
 
-import datastructure.list.udemy.hashtable.Person;
-import datastructure.list.udemy.hashtable.StoredPerson;
+import datastructure.udemy.hashtable.Person;
+import datastructure.udemy.hashtable.StoredPerson;
 
 /**
  * lazy delete vs rehashing

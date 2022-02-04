@@ -1,4 +1,4 @@
-package datastructure.list.udemy.tree;
+package datastructure.udemy.tree;
 
 public class Tree {
     private TreeNode root;

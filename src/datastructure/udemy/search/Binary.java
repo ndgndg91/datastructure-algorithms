@@ -1,4 +1,4 @@
-package datastructure.list.udemy.search;
+package datastructure.udemy.search;
 
 /**
  * Data must be sorted

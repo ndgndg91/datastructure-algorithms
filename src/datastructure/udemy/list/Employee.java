@@ -1,42 +1,42 @@
-package datastructure.list.udemy.hashtable;
+package datastructure.udemy.list;
 
 import java.util.Objects;
 
-public class Person {
+public class Employee {
     private final String fullName;
-    private final int age;
+    private final int number;
 
-    public Person(String fullName, int age) {
+    public Employee(String fullName, int number) {
         this.fullName = fullName;
-        this.age = age;
+        this.number = number;
     }
 
     public String getFullName() {
         return fullName;
     }
 
-    public int getAge() {
-        return age;
+    public int getNumber() {
+        return number;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return age == person.age && Objects.equals(fullName, person.fullName);
+        Employee employee = (Employee) o;
+        return number == employee.number && Objects.equals(fullName, employee.fullName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fullName, age);
+        return Objects.hash(fullName, number);
     }
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "Employee{" +
                 "fullName='" + fullName + '\'' +
-                ", age=" + age +
+                ", number=" + number +
                 '}';
     }
 }

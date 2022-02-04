@@ -1,7 +1,7 @@
-package datastructure.list.udemy.hashtable.linearprobe;
+package datastructure.udemy.hashtable.linearprobe;
 
-import datastructure.list.udemy.hashtable.Person;
-import datastructure.list.udemy.hashtable.StoredPerson;
+import datastructure.udemy.hashtable.Person;
+import datastructure.udemy.hashtable.StoredPerson;
 
 /**
  * using open addressing(closed hashing) - linear probe

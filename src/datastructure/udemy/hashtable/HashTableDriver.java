@@ -1,9 +1,9 @@
-package datastructure.list.udemy.hashtable;
+package datastructure.udemy.hashtable;
 
-import datastructure.list.udemy.hashtable.chained.ChainedHashtable;
-import datastructure.list.udemy.hashtable.linearprobe.LinearProbeHashtable;
-import datastructure.list.udemy.hashtable.rehash.RehashingLinearProbeHashtable;
-import datastructure.list.udemy.hashtable.simple.SimpleHashtable;
+import datastructure.udemy.hashtable.chained.ChainedHashtable;
+import datastructure.udemy.hashtable.linearprobe.LinearProbeHashtable;
+import datastructure.udemy.hashtable.rehash.RehashingLinearProbeHashtable;
+import datastructure.udemy.hashtable.simple.SimpleHashtable;
 
 
 public class HashTableDriver {

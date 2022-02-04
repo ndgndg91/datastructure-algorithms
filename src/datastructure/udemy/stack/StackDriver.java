@@ -1,4 +1,4 @@
-package datastructure.list.udemy.stack;
+package datastructure.udemy.stack;
 
 import java.util.Deque;
 import java.util.LinkedList;

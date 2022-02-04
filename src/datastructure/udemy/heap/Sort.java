@@ -1,4 +1,4 @@
-package datastructure.list.udemy.heap;
+package datastructure.udemy.heap;
 
 /**
  * We know the root has the largest value
