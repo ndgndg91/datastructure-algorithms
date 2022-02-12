@@ -15,6 +15,6 @@ public class BookServiceInvocationHandler implements InvocationHandler {
         System.out.println("before invoke");
         method.invoke(bookService, args);
         System.out.println("after invoke");
-        return null;
+        return proxy;
     }
 }
