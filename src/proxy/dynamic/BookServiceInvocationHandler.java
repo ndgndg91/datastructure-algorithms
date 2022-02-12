@@ -12,9 +12,10 @@ public class BookServiceInvocationHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println("before invoke");
+
+        System.out.println("before invoke : " + method.getDeclaringClass() + " " + method.getName());
         method.invoke(bookService, args);
-        System.out.println("after invoke");
+        System.out.println("after invoke : " + method.getDeclaringClass() + " " + method.getName());
         return proxy;
     }
 }
