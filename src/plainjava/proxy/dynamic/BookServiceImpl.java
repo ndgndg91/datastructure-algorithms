@@ -1,4 +1,4 @@
-package proxy.dynamic;
+package plainjava.proxy.dynamic;
 
 public class BookServiceImpl implements BookService {
 

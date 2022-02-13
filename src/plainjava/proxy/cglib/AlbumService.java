@@ -1,4 +1,4 @@
-package proxy.cglib;
+package plainjava.proxy.cglib;
 
 public class AlbumService {
 

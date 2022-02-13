@@ -1,4 +1,4 @@
-package proxy.dynamic;
+package plainjava.proxy.dynamic;
 
 public interface BookService {
 

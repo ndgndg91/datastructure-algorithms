@@ -1,13 +1,13 @@
-package proxy;
+package plainjava.proxy;
 
 import net.sf.cglib.proxy.*;
-import proxy.cglib.AlbumService;
-import proxy.cglib.AlbumServiceCallbackFilter;
-import proxy.cglib.CreateAlbumMethodInterceptor;
-import proxy.cglib.DeleteAlbumMethodInterceptor;
-import proxy.dynamic.BookService;
-import proxy.dynamic.BookServiceImpl;
-import proxy.dynamic.BookServiceInvocationHandler;
+import plainjava.proxy.cglib.AlbumService;
+import plainjava.proxy.cglib.AlbumServiceCallbackFilter;
+import plainjava.proxy.cglib.CreateAlbumMethodInterceptor;
+import plainjava.proxy.cglib.DeleteAlbumMethodInterceptor;
+import plainjava.proxy.dynamic.BookService;
+import plainjava.proxy.dynamic.BookServiceImpl;
+import plainjava.proxy.dynamic.BookServiceInvocationHandler;
 
 import java.lang.reflect.Proxy;
 
