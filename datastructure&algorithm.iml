@@ -24,5 +24,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="cglib" level="project" />
+    <orderEntry type="library" name="postgresql" level="project" />
   </component>
 </module>
