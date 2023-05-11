@@ -11,7 +11,7 @@ public class LongestWord {
     public static String longestWord(String sen) {
         // code goes here
          return Arrays.stream(sen.split(" "))
-                .map(word -> word.replaceAll("[0-9!@#$%^&*()]", ""))
+                .map(word -> word.replaceAll("[/:!@#$%^&*()]", ""))
                 .max(Comparator.comparingInt(String::length)).orElseThrow();
     }
 }
