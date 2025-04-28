@@ -7,10 +7,10 @@ import java.util.Map;
 
 public class TopKFrequentElements {
     public static void main(String[] args) {
-        for (var i : new TopKFrequentElements().topKFrequent(new int[]{1, 2, 2, 2, 3, 3}, 2)) {
+        for (var i : new TopKFrequentElements().topKFrequent2(new int[]{1, 2, 2, 2, 3, 3}, 2)) {
             System.out.println(i);
         }
-        for (var i : new TopKFrequentElements().topKFrequent(new int[]{7,7}, 1)) {
+        for (var i : new TopKFrequentElements().topKFrequent2(new int[]{7,7}, 1)) {
             System.out.println(i);
         }
     }
